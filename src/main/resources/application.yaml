@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: ${USER_SERVICE_URI:http://localhost:8081}
+          predicates:
+            - Path=/user/**
+        - id: health-data-service
+          uri: ${HEALTH_DATA_SERVICE_URI:http://localhost:8082}
+          predicates:
+            - Path=/health-data/**
+        - id: medication-management-service
+          uri: ${MEDICATION_MANAGEMENT_SERVICE_URI:http://localhost:8083}
+          predicates:
+            - Path=/medication-management/**
+        - id: consultation-service
+          uri: ${CONSULTATION_SERVICE_URI:http://localhost:8084}
+          predicates:
+            - Path=/consultation/**
+        - id: recommendation-service
+          uri: ${RECOMMENDATION_SERVICE_URI:http://localhost:8085}
+          predicates:
+            - Path=/recommendation/**
